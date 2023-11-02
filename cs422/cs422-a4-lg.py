@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 import warnings
 warnings.filterwarnings("ignore")
+from sklearn.linear_model import LogisticRegression
 
 # read in data
 data = pd.read_csv("nba-players.csv")
@@ -30,7 +31,8 @@ inputFeatures = dataNew.drop('target_5yrs', axis='columns')
 X_train, X_test, y_train, y_test = train_test_split(inputFeatures, target, test_size=0.2)
 
 # Logistics Regression
-model = 
+model = LogisticRegression()
+# train the model
 model.fit(X_train, y_train)
 
 
@@ -54,6 +56,7 @@ print(log_loss(y_test, model.predict(X_test)))
 # get accuracy 
 # print(y_test[:10])
 # print(model.predict(X_test[:10]))
+
 
 # %%
 # Create confusion matrix
