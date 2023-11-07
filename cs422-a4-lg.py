@@ -10,7 +10,9 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 import warnings
 warnings.filterwarnings("ignore")
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import SGDClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
 
 # read in data
 data = pd.read_csv("nba-players.csv")
@@ -31,7 +33,10 @@ inputFeatures = dataNew.drop('target_5yrs', axis='columns')
 X_train, X_test, y_train, y_test = train_test_split(inputFeatures, target, test_size=0.2)
 
 # Logistics Regression
-model = LogisticRegression()
+# standardizes each feature big range of #s 
+# normalization
+#model = make_pipeline(StandardScaler(), SGDClassifier(loss="log_loss"))
+model = SGDClassifier(loss="log_loss")
 # train the model
 model.fit(X_train, y_train)
 
