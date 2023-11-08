@@ -57,11 +57,15 @@ print(classification_report(y_test, model.predict(X_test)))
 print("Log Loss:")
 print(log_loss(y_test, model.predict(X_test)))
 
+# print the w vector
+print("Parameter Vector:")
+print(model.coef_)
+print("Parameter Vector With Intercept:")
+print(np.hstack((model.intercept_[:,None], model.coef_)))
 # sensitivity = model.recall_score()
 # get accuracy 
 # print(y_test[:10])
 # print(model.predict(X_test[:10]))
-
 
 # %%
 # Create confusion matrix
